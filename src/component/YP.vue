@@ -1,5 +1,5 @@
 <template>
-  <p :style="cssModule">{{ staticData.value }}</p>
+  <p :style="cssModule">{{ staticData.text }}</p>
 </template>
 
 <script lang="ts">

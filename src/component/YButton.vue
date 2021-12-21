@@ -1,6 +1,6 @@
 <template>
   <button :style="styleData">
-    {{ staticData.value }}
+    {{ staticData.btnValue }}
   </button>
 </template>
 

@@ -1,9 +1,9 @@
 <template>
-  <img :style="cssModule" :src="staticData.imglUrl" alt="" />
+  <input :style="cssModule" :placeholder="staticData.placeholder" />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
   props: ["domData"],
@@ -13,7 +13,7 @@ export default defineComponent({
       staticData: props.domData.staticData,
     };
   },
-})
+});
 </script>
 
 <style scoped></style>

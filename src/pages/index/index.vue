@@ -1,6 +1,10 @@
 <template>
   <!-- 页面 -->
-  <div v-for="c in domData" :key="c.id">
+  <div
+    v-for="c in domData.content"
+    :key="c.id"
+    :style="{ height: domData.height/32 + 'rem' }"
+  >
     <!-- 组件 -->
     <component
       v-for="item in c"
@@ -13,13 +17,14 @@
 
 <script lang="ts">
 import { cloud } from "@/modules/request";
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent, onMounted, reactive, ref } from "vue";
 import { useRoute } from "vue-router";
 import { animationFun, resetCss } from "../../utils/index";
 import YImg from "../../component/YImg.vue";
 import YP from "../../component/YP.vue";
 import YButton from "../../component/YButton.vue";
 import YDiv from "../../component/YDiv.vue";
+import YInput from "../../component/YInput.vue";
 
 export default defineComponent({
   components: {
@@ -27,11 +32,12 @@ export default defineComponent({
     YP,
     YButton,
     YDiv,
+    YInput,
   },
   setup() {
     const db = cloud.database();
     const route = useRoute();
-    const domData: any = ref([]);
+    const domData: any = ref({});
     console.log(route.params);
     onMounted(async () => {
       console.log(route.params);
@@ -91,12 +97,10 @@ export default defineComponent({
           c.animation = animationFun(c.animation);
         });
       });
-      console.log(data.content);
-      domData.value = data.content;
+      domData.value = data;
     }
     return {
       domData,
-      resetCss,
     };
   },
 });
