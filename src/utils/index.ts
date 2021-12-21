@@ -51,6 +51,11 @@ export function resetCss(data: Object): any {
   return cssData
 }
 
+/**
+ * 动画格式化函数
+ * @param animation : 动画对象;
+ * @returns
+ */
 export function animationFun(animation: any[]) {
   let animationToDom1 = animation.reduce((item, data, index) => {
     let datas = deepClone(data)
@@ -66,5 +71,21 @@ export function animationFun(animation: any[]) {
   }, '')
   return {
     animation: animationToDom1,
+  }
+}
+
+export function handleFun(data) {
+  switch (data.linkType) {
+    case '0':
+      break
+    case '1':
+      location.href = data.link
+      break
+    case '2':
+      location.href = `tel:${data.phone}`
+      break
+
+    default:
+      break
   }
 }

@@ -1,11 +1,11 @@
 <template>
-  <button :style="styleData">
+  <button :style="styleData" @click="handle">
     {{ staticData.btnValue }}
   </button>
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs } from "vue";
+import { defineComponent } from "vue";
 import { domData } from "./domData";
 
 export default defineComponent({
