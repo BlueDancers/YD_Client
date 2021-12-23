@@ -1,17 +1,46 @@
 <template>
-  <!-- 页面 -->
-  <div
-    v-for="c in domData.content"
-    :key="c.id"
-    :style="{ height: domData.height/32 + 'rem' }"
-  >
-    <!-- 组件 -->
-    <component
-      v-for="item in c"
-      :key="item.id"
-      :is="item.name"
-      :domData="item"
-    ></component>
+  <div :class="domData.pageType == 2 ? 'page_index' : ''">
+    <van-swipe
+      v-if="domData.pageType == 2"
+      :vertical="true"
+      :style="{ height: `${chileHeight}px` }"
+      @change="onChange"
+      lazy-render
+    >
+      <van-swipe-item
+        v-for="c in domData.content"
+        :key="c.id"
+        :style="{
+          height: `${chileHeight}px`,
+          backgroundColor: domData.backColor,
+        }"
+      >
+        <div class="comp_cont" :style="{ height: `${chileHeight}px` }">
+          <component
+            v-for="item in c"
+            :key="item.id"
+            :is="item.name"
+            :domData="item"
+          ></component>
+        </div>
+      </van-swipe-item>
+    </van-swipe>
+    <div
+      v-else
+      :style="{
+        height: `${domData.height / 32}rem`,
+        backgroundColor: domData.backColor,
+      }"
+    >
+      <div v-if="domData.content">
+        <component
+          v-for="item in domData.content[0]"
+          :key="item.id"
+          :is="item.name"
+          :domData="item"
+        ></component>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -38,8 +67,11 @@ export default defineComponent({
     const db = cloud.database();
     const route = useRoute();
     const domData: any = ref({});
+    const chileHeight = ref(0);
+    const swiperIndex = ref(0);
     console.log(route.params);
     onMounted(async () => {
+      chileHeight.value = document.body.clientHeight;
       console.log(route.params);
       // 首先通过 organCode 确认组织
       // 在通过 pageCode 确认页面
@@ -90,7 +122,7 @@ export default defineComponent({
     });
     function processPageData(data) {
       document.title = data.routerName;
-      document.body.style.backgroundColor = data.backColor;
+      // document.body.style.backgroundColor = data.backColor;
       data.content.map((p) => {
         p.map((c) => {
           c.cssModule = resetCss(c.cssModule);
@@ -99,11 +131,48 @@ export default defineComponent({
       });
       domData.value = data;
     }
+    /**
+     *
+     */
+    function onChange(event) {
+      console.log(event);
+      swiperIndex.value = event;
+    }
     return {
       domData,
+      chileHeight,
+      swiperIndex,
+      onChange,
     };
   },
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.page_index {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  height: 100vh;
+  width: 100vw;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+.van-swipe {
+  /* width: 100%; */
+}
+.van-swipe-item {
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.comp_cont {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+</style>
