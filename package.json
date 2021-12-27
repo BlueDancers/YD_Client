@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "upload": "node build/upload.js"
   },
   "dependencies": {
     "@cloudbase/js-sdk": "^1.7.1",
@@ -19,6 +20,9 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.3.0",
     "@vue/compiler-sfc": "^3.0.5",
+    "archiver": "^5.3.0",
+    "inquirer": "^8.2.0",
+    "node-ssh": "^12.0.2",
     "postcss-pxtorem": "^5.1.1",
     "typescript": "^4.3.2",
     "vite": "^2.4.4",

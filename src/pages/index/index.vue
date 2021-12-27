@@ -17,7 +17,7 @@
       >
         <div class="comp_cont" :style="{ height: `${chileHeight}px` }">
           <component
-            v-for="item in c"
+            v-for="item in c.dom"
             :key="item.id"
             :is="item.name"
             :domData="item"
@@ -124,11 +124,13 @@ export default defineComponent({
       document.title = data.routerName;
       // document.body.style.backgroundColor = data.backColor;
       data.content.map((p) => {
-        p.map((c) => {
+        p.dom.map((c) => {
           c.cssModule = resetCss(c.cssModule);
           c.animation = animationFun(c.animation);
         });
       });
+      console.log(data);
+      
       domData.value = data;
     }
     /**
