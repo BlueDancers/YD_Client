@@ -34,7 +34,7 @@
     >
       <div v-if="domData.content">
         <component
-          v-for="item in domData.content[0]"
+          v-for="item in domData.content[0].dom"
           :key="item.id"
           :is="item.name"
           :domData="item"
@@ -72,7 +72,6 @@ export default defineComponent({
     console.log(route.params);
     onMounted(async () => {
       chileHeight.value = document.body.clientHeight;
-      console.log(route.params);
       // 首先通过 organCode 确认组织
       // 在通过 pageCode 确认页面
       // 获取组织id
@@ -82,7 +81,6 @@ export default defineComponent({
           routerCode: route.params.organCode,
         })
         .get();
-      console.log(parentData.data);
       if (parentData.data.length != 1) {
         console.log("组织不存在");
         return;
@@ -130,14 +128,14 @@ export default defineComponent({
         });
       });
       console.log(data);
-      
+
       domData.value = data;
     }
     /**
      *
      */
     function onChange(event) {
-      console.log(event);
+      console.log("onChange", event);
       swiperIndex.value = event;
     }
     return {

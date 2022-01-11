@@ -30,4 +30,7 @@ body {
   height: 100vh;
   width: 100vw;
 }
+img {
+  -webkit-user-drag: none;
+}
 </style>
