@@ -54,6 +54,7 @@ import YP from "../../component/YP.vue";
 import YButton from "../../component/YButton.vue";
 import YDiv from "../../component/YDiv.vue";
 import YInput from "../../component/YInput.vue";
+import YSwiper from '../../component/YSwiper.vue';
 
 export default defineComponent({
   components: {
@@ -62,6 +63,7 @@ export default defineComponent({
     YButton,
     YDiv,
     YInput,
+    YSwiper
   },
   setup() {
     const db = cloud.database();
