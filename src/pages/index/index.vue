@@ -1,30 +1,30 @@
 <template>
   <div :class="domData.pageType == 2 ? 'page_index' : ''">
+    <!-- 轮播dom -->
     <van-swipe
       v-if="domData.pageType == 2"
       :vertical="true"
-      :style="{ height: `${chileHeight}px` }"
       @change="onChange"
       lazy-render
     >
-      <van-swipe-item
-        v-for="c in domData.content"
-        :key="c.id"
-        :style="{
-          height: `${chileHeight}px`,
-          backgroundColor: domData.backColor,
-        }"
-      >
-        <div class="comp_cont" :style="{ height: `${chileHeight}px` }">
+      <van-swipe-item v-for="(c, index) in domData.content" :key="c.id">
+        <div
+          class="comp_cont"
+          :style="{
+            top: `${0}rem`,
+          }"
+        >
           <component
             v-for="item in c.dom"
             :key="item.id"
             :is="item.name"
             :domData="item"
-          ></component>
+            :animation="swiperIndex == index"
+          />
         </div>
       </van-swipe-item>
     </van-swipe>
+    <!-- 普通dom -->
     <div
       v-else
       :style="{
@@ -54,7 +54,7 @@ import YP from "../../component/YP.vue";
 import YButton from "../../component/YButton.vue";
 import YDiv from "../../component/YDiv.vue";
 import YInput from "../../component/YInput.vue";
-import YSwiper from '../../component/YSwiper.vue';
+import YSwiper from "../../component/YSwiper.vue";
 
 export default defineComponent({
   components: {
@@ -63,7 +63,7 @@ export default defineComponent({
     YButton,
     YDiv,
     YInput,
-    YSwiper
+    YSwiper,
   },
   setup() {
     const db = cloud.database();
@@ -137,7 +137,6 @@ export default defineComponent({
      *
      */
     function onChange(event) {
-      console.log("onChange", event);
       swiperIndex.value = event;
     }
     return {
@@ -152,29 +151,18 @@ export default defineComponent({
 
 <style scoped>
 .page_index {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
-  right: 0px;
-  height: 100vh;
-  width: 100vw;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
+  position: relative;
 }
 .van-swipe {
-  /* width: 100%; */
+  overflow: hidden;
+  height: 100vh;
 }
 .van-swipe-item {
-  overflow: hidden;
-  height: 100%;
-  display: flex;
-  align-items: center;
 }
 .comp_cont {
   overflow: hidden;
   position: relative;
+  height: 100%;
   width: 100%;
 }
 </style>

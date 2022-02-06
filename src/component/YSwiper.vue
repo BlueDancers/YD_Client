@@ -11,11 +11,9 @@ import { defineComponent } from "vue";
 import { domData } from "./domData";
 
 export default defineComponent({
-  props: ["domData"],
+  props: ["domData", "animation"],
   setup(props) {
-    const total = domData(props.domData);
-    console.log(total.staticData.value.data);
-
+    const total = domData(props);
     return {
       ...total,
     };
