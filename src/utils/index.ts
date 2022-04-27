@@ -43,7 +43,7 @@ export function resetCss(data: Object): any {
   const cssData = {}
   for (const key in data) {
     if (cssTopx(key) && !String(data[key]).includes('%')) {
-      cssData[key] = `${data[key] / 32}rem`
+      cssData[key] = `${data[key] / 32.5}rem`
     } else {
       cssData[key] = data[key]
     }

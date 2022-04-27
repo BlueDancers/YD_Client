@@ -3,23 +3,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, nextTick, onMounted } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import { cloud } from "./modules/request";
+import { defineComponent, onMounted } from 'vue'
+import { cloud } from './modules/request'
 
 export default defineComponent({
   setup() {
     var auth: any = cloud.auth({
-      persistence: "local",
-    });
+      persistence: 'local',
+    })
     onMounted(async () => {
-      const loginState = await auth.getLoginState();
+      const loginState = await auth.getLoginState()
       if (!loginState || !loginState.isAnonymousAuth) {
-        await auth.anonymousAuthProvider().signIn();
+        await auth.anonymousAuthProvider().signIn()
       }
-    });
+    })
   },
-});
+})
 </script>
 
 <style>

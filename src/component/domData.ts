@@ -1,4 +1,4 @@
-import { handleFun } from '@/utils'
+import { handleFun } from '../utils/index'
 import { onMounted, ref, watch, watchEffect } from 'vue'
 
 /**
