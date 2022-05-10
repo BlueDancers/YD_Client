@@ -27,6 +27,6 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'yc',
+    outDir: 'client',
   },
 })

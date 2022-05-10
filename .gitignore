@@ -1,7 +1,8 @@
 node_modules
 .DS_Store
-dist
+chient
 /build/upload.js
 yd.upload.js
 /yc
 *.local
+
