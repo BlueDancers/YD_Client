@@ -1,4 +1,4 @@
-lockfileVersion: 5.3
+lockfileVersion: 5.4
 
 specifiers:
   '@cloudbase/js-sdk': ^1.7.1
@@ -13,13 +13,14 @@ specifiers:
   node-ssh: ^12.0.2
   postcss-pxtorem: ^5.1.1
   typescript: ^4.3.2
-  vant: ^3.3.7
+  vant: 3.4.8
   vite: ^2.4.4
-  vite-plugin-style-import: ^1.4.0
+  vite-plugin-style-import: 1.4.1
   vue: ^3.0.5
   vue-router: ^4.0.11
   vue-tsc: ^0.2.2
   vuex: ^4.0.2
+  ydh5-ui: ^0.0.12
 
 dependencies:
   '@cloudbase/js-sdk': 1.7.2
@@ -31,6 +32,7 @@ dependencies:
   vue: 3.2.33
   vue-router: 4.0.14_vue@3.2.33
   vuex: 4.0.2_vue@3.2.33
+  ydh5-ui: 0.0.12
 
 devDependencies:
   '@vitejs/plugin-vue': 1.10.2_vite@2.9.6
@@ -49,12 +51,13 @@ packages:
   /@babel/helper-validator-identifier/7.16.7:
     resolution: {integrity: sha512-hsEnFemeiW4D08A5gUAZxLBTXpZ39P+a+DGDsHw1yxqyQ/jzFEnxf5uTEGp+3bzAbNOxU1paTgYS4ECU/IgfDw==}
     engines: {node: '>=6.9.0'}
-    dev: true
 
   /@babel/parser/7.17.9:
     resolution: {integrity: sha512-vqUSBLP8dQHFPdPi9bc5GK9vRkYHJ49fsZdtoJ8EQ8ibpwk5rPKfvNIwChB0KVXcIjcepEBBd2VHC5r9Gy8ueg==}
     engines: {node: '>=6.0.0'}
     hasBin: true
+    dependencies:
+      '@babel/types': 7.17.0
 
   /@babel/types/7.17.0:
     resolution: {integrity: sha512-TmKSNO4D5rzhL5bjWFcVHHLETzfQ/AmbKpKPOSjlP0WoHZ6L911fgoOKY4Alp/emzG4cHJdyN49zpgkbXFEHHw==}
@@ -62,7 +65,6 @@ packages:
     dependencies:
       '@babel/helper-validator-identifier': 7.16.7
       to-fast-properties: 2.0.0
-    dev: true
 
   /@cloudbase/adapter-interface/0.4.1:
     resolution: {integrity: sha512-DJBhBUMg6pYByaw4II7rawbW8nu+x+faZFIxIkWeTRSxboW/jS3NpBQ7kAbycEJVAB2DO77FsnaHKYAMLnvwzw==}
@@ -1787,7 +1789,6 @@ packages:
   /to-fast-properties/2.0.0:
     resolution: {integrity: sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=}
     engines: {node: '>=4'}
-    dev: true
 
   /token-stream/1.0.0:
     resolution: {integrity: sha1-zCAOqyYT9BZtJ/+a/HylbUnfbrQ=}
@@ -2083,6 +2084,12 @@ packages:
   /yallist/4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
     dev: true
+
+  /ydh5-ui/0.0.12:
+    resolution: {integrity: sha512-LtOOprbBXR02yRUfMPMUG5kB3lNP01iV4J4I+W2pEaDhgKt2tgs82yNFKwJXel8yKk9jrpuwNdYifnmhW/E/7Q==}
+    dependencies:
+      vue: 3.2.33
+    dev: false
 
   /zip-stream/4.1.0:
     resolution: {integrity: sha512-zshzwQW7gG7hjpBlgeQP9RuyPGNxvJdzR8SUM3QhxCnLjWN2E7j3dOvpeDcQoETfHx0urRS7EtmVToql7YpU4A==}

@@ -12,6 +12,7 @@
         <yd-img v-if="item.name == 'y-img'" :compData="item"></yd-img>
         <yd-edit v-else-if="item.name == 'y-edit'" :compData="item"></yd-edit>
         <yd-p v-else-if="item.name == 'y-p'" :compData="item"></yd-p>
+        <yd-swiper v-else-if="item.name == 'y-swiper'" :compData="item"></yd-swiper>
       </template>
     </div>
   </div>
@@ -23,6 +24,7 @@ import { defineComponent, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 export default defineComponent({
+  components: {},
   setup() {
     const db = cloud.database()
     const route = useRoute()
