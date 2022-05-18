@@ -6,4 +6,6 @@ yd.upload.js
 /yc
 component_ui
 *.local
+update.config.js
+client
 
