@@ -32,4 +32,7 @@ body {
 img {
   -webkit-user-drag: none;
 }
+p {
+  font-size: 0.4rem;
+}
 </style>

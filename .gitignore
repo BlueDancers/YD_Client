@@ -4,5 +4,6 @@ chient
 /build/upload.js
 yd.upload.js
 /yc
+component_ui
 *.local
 

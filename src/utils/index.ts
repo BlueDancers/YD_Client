@@ -36,14 +36,44 @@ export function cssTopx(name) {
   ].includes(name)
 }
 
+export function compResetCss(data: Object, isMobile: boolean) {
+  let newCss
+  if (isMobile) {
+    newCss = resetCssMobile(data)
+  } else {
+    newCss = resetCssPC(data)
+    delete newCss.position
+    delete newCss['z-index']
+    delete newCss.top
+    delete newCss.left
+  }
+
+  return newCss
+}
+
 /**
  * 格式化
  */
-export function resetCss(data: Object): any {
+export function resetCssMobile(data: Object): any {
   const cssData = {}
   for (const key in data) {
     if (cssTopx(key) && !String(data[key]).includes('%')) {
       cssData[key] = `${data[key] / 32.5}rem`
+    } else {
+      cssData[key] = data[key]
+    }
+  }
+  return cssData
+}
+
+/**
+ * 格式化
+ */
+export function resetCssPC(data: Object): any {
+  const cssData = {}
+  for (const key in data) {
+    if (cssTopx(key) && !String(data[key]).includes('%')) {
+      cssData[key] = `${data[key]}px`
     } else {
       cssData[key] = data[key]
     }
