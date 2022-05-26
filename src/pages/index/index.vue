@@ -3,7 +3,7 @@
     <div
       :style="{
         height: `${compData.height / 32.5}rem`,
-        backgroundColor: compData.backColor,
+        background: compData.backColor,
       }"
     >
       <template v-for="item in compData.template" :key="item.id">
